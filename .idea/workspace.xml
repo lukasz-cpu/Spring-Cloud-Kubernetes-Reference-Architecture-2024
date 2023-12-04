@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca9a38b1-e61d-4df4-99d3-ccc43219a258" name="Changes" comment="add new files">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organisation-service/src/main/java/eu/codification/organisationservice/controllers/OrganisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organisation-service/src/main/java/eu/codification/organisationservice/controllers/OrganisationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
