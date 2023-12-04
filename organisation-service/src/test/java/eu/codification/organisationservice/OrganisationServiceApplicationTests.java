@@ -1,10 +1,10 @@
-package eu.codification.organizationservice;
+package eu.codification.organisationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OrganizationServiceApplicationTests {
+class OrganisationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

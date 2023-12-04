@@ -1,13 +1,13 @@
-package eu.codification.organizationservice;
+package eu.codification.organisationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrganizationServiceApplication {
+public class OrganisationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrganizationServiceApplication.class, args);
+		SpringApplication.run(OrganisationServiceApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package eu.codification.organizationservice.model;
+package eu.codification.organisationservice.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -67,7 +67,7 @@ public class Organisation {
 
     @Override
     public String toString() {
-        return "Organization [id=" + id + ", name=" + name + ", address=" + address + "]";
+        return "Organisation [id=" + id + ", name=" + name + ", address=" + address + "]";
     }
 
 }

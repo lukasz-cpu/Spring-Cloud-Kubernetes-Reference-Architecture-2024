@@ -1,6 +1,6 @@
-package eu.codification.organizationservice.repository;
+package eu.codification.organisationservice.repository;
 
-import eu.codification.organizationservice.model.Organisation;
+import eu.codification.organisationservice.model.Organisation;
 import org.springframework.data.repository.CrudRepository;
 
 public interface OrganisationRepository extends CrudRepository<Organisation, String> {

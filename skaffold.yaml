@@ -4,7 +4,10 @@ metadata:
   name: spring-cloud-kubernetes-reference-architecture--
 build:
   artifacts:
-    - image: mongo
+    - image: org-service
+      hooks:
+        before:
+          - command: [ "sh", "-c", "./build-organisation-service.sh" ]
       context: organisation-service
       docker:
         dockerfile: Dockerfile

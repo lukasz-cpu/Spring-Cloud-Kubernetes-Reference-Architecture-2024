@@ -1,7 +1,7 @@
-package eu.codification.organizationservice.controllers;
+package eu.codification.organisationservice.controllers;
 
-import eu.codification.organizationservice.model.Organisation;
-import eu.codification.organizationservice.repository.OrganisationRepository;
+import eu.codification.organisationservice.model.Organisation;
+import eu.codification.organisationservice.repository.OrganisationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +22,13 @@ public class OrganisationController {
 
     @PostMapping
     public Organisation add(@RequestBody Organisation organisation) {
-        LOGGER.info("Organization add: {}", organisation);
+        LOGGER.info("Organisation add: {}", organisation);
         return organisationRepository.save(organisation);
     }
 
     @GetMapping
     public Iterable<Organisation> findAll() {
-        LOGGER.info("Organization find");
+        LOGGER.info("Organisation find");
         return organisationRepository.findAll();
     }
 }

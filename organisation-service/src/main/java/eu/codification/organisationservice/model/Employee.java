@@ -1,4 +1,4 @@
-package eu.codification.organizationservice.model;
+package eu.codification.organisationservice.model;
 
 public class Employee {
 
