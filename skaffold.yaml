@@ -1,0 +1,16 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: spring-cloud-kubernetes-reference-architecture--
+build:
+  artifacts:
+    - image: org-service
+      context: organisation-service
+      jib:
+        project: eu.codification:organisation-service
+manifests:
+  rawYaml:
+    - k8s/mongo/mongo-service.yaml
+    - k8s/mongo/mongodb-configmap.yaml
+    - k8s/mongo/mongodb-deployment.yaml
+    - k8s/mongo/mongodb-secret.yaml
