@@ -1,3 +1,8 @@
 #!/bin/bash
-cd organisation-service/
-mvn clean package -DskipTests
+(
+   cd organisation-service/
+   mvn clean package -DskipTests
+)
+(
+   skaffold build
+)
