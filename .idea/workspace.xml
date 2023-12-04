@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca9a38b1-e61d-4df4-99d3-ccc43219a258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/organisation-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Spring-Cloud-Kubernetes-Reference-Architecture-2024.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-organisation-service.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-organisation-service.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/mongo/mongo-service.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/mongo/mongodb-configmap.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/mongo/mongodb-deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/mongo/mongodb-secret.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/organisation-service/src/main/java/eu/codification/organisationservice/OrganisationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/organisation-service/src/main/java/eu/codification/organisationservice/OrganisationServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="ca9a38b1-e61d-4df4-99d3-ccc43219a258" name="Changes" comment="add new files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,6 +47,27 @@
       <option name="presentableId" value="Default" />
       <updated>1701711669120</updated>
     </task>
+    <task id="LOCAL-00001" summary="add new files">
+      <option name="closed" value="true" />
+      <created>1701715283689</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701715283689</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add new files">
+      <option name="closed" value="true" />
+      <created>1701715309201</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701715309201</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add new files" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new files" />
   </component>
 </project>
