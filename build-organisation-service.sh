@@ -6,3 +6,6 @@
 (
    skaffold build
 )
+(
+   skaffold dev
+)

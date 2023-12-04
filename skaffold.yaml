@@ -4,13 +4,12 @@ metadata:
   name: spring-cloud-kubernetes-reference-architecture--
 build:
   artifacts:
-    - image: org-service
+    - image: codification/organisation
       context: organisation-service
       docker:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
-    - k8s/mongo/mongo-service.yaml
-    - k8s/mongo/mongodb-configmap.yaml
-    - k8s/mongo/mongodb-deployment.yaml
-    - k8s/mongo/mongodb-secret.yaml
+    - k8s/roles/*.yaml
+    - k8s/mongo/*.yaml
+    - k8s/organisation-service/*.yaml
