@@ -1,6 +1,6 @@
 #!/bin/bash
 (
-   cd organisation-service/
+   cd emergency-room-service/
    mvn clean package -DskipTests
 )
 (

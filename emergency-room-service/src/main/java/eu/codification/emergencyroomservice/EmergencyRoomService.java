@@ -1,13 +1,13 @@
-package eu.codification.organisationservice;
+package eu.codification.emergencyroomservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrganisationServiceApplication {
+public class EmergencyRoomService {
 
 	public static void main(String[] args) {
-		 SpringApplication.run(OrganisationServiceApplication.class, args);
+		SpringApplication.run(EmergencyRoomService.class, args);
 	}
 
 }

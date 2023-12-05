@@ -20,7 +20,7 @@
     </properties>
 
     <modules>
-        <module>organisation-service</module>
+        <module>emergency-room-service</module>
     </modules>
 
     <dependencyManagement>

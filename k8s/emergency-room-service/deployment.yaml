@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: organisation
+  name: emergency-room-service
   labels:
-    app: organisation
+    app: emergency-room-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: organisation
+      app: emergency-room-service
   template:
     metadata:
       labels:
-        app: organisation
+        app: emergency-room-service
     spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
-      - name: organisation
-        image: codification/organisation
+      - name: emergency-room-service
+        image: codification/emergency-room-service
         ports:
         - containerPort: 8080
         env:

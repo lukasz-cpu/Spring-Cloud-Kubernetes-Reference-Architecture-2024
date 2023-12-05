@@ -4,12 +4,12 @@ metadata:
   name: spring-cloud-kubernetes-reference-architecture--
 build:
   artifacts:
-    - image: codification/organisation
-      context: organisation-service
+    - image: codification/emergency-room-service
+      context: emergency-room-service
       docker:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
     - k8s/roles/*.yaml
     - k8s/mongo/*.yaml
-    - k8s/organisation-service/*.yaml
+    - k8s/emergency-room-service/*.yaml
