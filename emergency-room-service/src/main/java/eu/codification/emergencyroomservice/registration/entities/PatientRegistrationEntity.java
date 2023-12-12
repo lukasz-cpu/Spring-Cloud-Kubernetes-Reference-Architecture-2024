@@ -1,6 +1,7 @@
 package eu.codification.emergencyroomservice.registration.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 @Document(collection = "patient_registration")
 public class PatientRegistrationEntity {
+
     @Id
     private String id;
     private String patientId;
@@ -116,5 +118,65 @@ public class PatientRegistrationEntity {
         result = 31 * result + (patientId != null ? patientId.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    public static PatientRegistrationEntityBuilder builder() {
+        return new PatientRegistrationEntityBuilder();
+    }
+
+    public static class PatientRegistrationEntityBuilder {
+
+        private String id;
+        private String patientId;
+        private String firstName;
+        private String lastName;
+        private String email;
+        private LocalDate dateOfBirth;
+        private int height;
+        private int weight;
+
+        public PatientRegistrationEntityBuilder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder patientId(String patientId) {
+            this.patientId = patientId;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder dateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder height(int height) {
+            this.height = height;
+            return this;
+        }
+
+        public PatientRegistrationEntityBuilder weight(int weight) {
+            this.weight = weight;
+            return this;
+        }
+
+        public PatientRegistrationEntity build() {
+            return new PatientRegistrationEntity(id, patientId, firstName, lastName, email, dateOfBirth, height, weight);
+        }
     }
 }

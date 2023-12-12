@@ -17,4 +17,5 @@ public class PatientRegistration {
     private int height;
     private int weight;
     private LocalDate hospitalAdmission = LocalDate.now();
+    private String documentId;
 }

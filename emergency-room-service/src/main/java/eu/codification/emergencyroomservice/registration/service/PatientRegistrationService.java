@@ -1,5 +1,7 @@
 package eu.codification.emergencyroomservice.registration.service;
 
+import eu.codification.emergencyroomservice.registration.entities.PatientRegistrationEntity;
+import eu.codification.emergencyroomservice.registration.mappers.PatientRegistrationMapper;
 import eu.codification.emergencyroomservice.registration.model.PatientRegistration;
 import eu.codification.emergencyroomservice.registration.repository.PatientRegistrationRepository;
 import org.slf4j.Logger;
@@ -17,6 +19,9 @@ public class PatientRegistrationService {
     }
 
     public void proceedWithRegistration(PatientRegistration patientRegistration) {
-        log.info(patientRegistration.toString());
+        PatientRegistrationEntity patientRegistrationEntity = PatientRegistrationMapper.mapToEntity(patientRegistration);
+        PatientRegistrationEntity save = patientRegistrationRepository.save(patientRegistrationEntity);
+        log.info(save.getId());
+
     }
 }

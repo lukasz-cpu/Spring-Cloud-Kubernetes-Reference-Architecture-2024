@@ -17,18 +17,20 @@ public class PatientRegistrationMapper {
         model.setHeight(dto.getHeight());
         model.setWeight(dto.getWeight());
         model.setHospitalAdmission(LocalDate.now()); // Assuming you want to set the current date for hospital admission
+        model.setDocumentId(dto.getDocumentId());
         return model;
     }
 
-    public static PatientRegistrationEntity mapModelToEntity(PatientRegistration model) {
-        PatientRegistrationEntity entity = new PatientRegistrationEntity();
-        entity.setFirstName(model.getFirstName());
-        entity.setLastName(model.getLastName());
-        entity.setEmail(model.getEmail());
-        entity.setDateOfBirth(model.getDateOfBirth());
-        entity.setHeight(model.getHeight());
-        entity.setWeight(model.getWeight());
-        return entity;
+    public static PatientRegistrationEntity mapToEntity(PatientRegistration patientRegistration) {
+        return PatientRegistrationEntity.builder()
+                .patientId(patientRegistration.getDocumentId())
+                .firstName(patientRegistration.getFirstName())
+                .lastName(patientRegistration.getLastName())
+                .email(patientRegistration.getEmail())
+                .dateOfBirth(patientRegistration.getDateOfBirth())
+                .height(patientRegistration.getHeight())
+                .weight(patientRegistration.getWeight())
+                .build();
     }
 
 }

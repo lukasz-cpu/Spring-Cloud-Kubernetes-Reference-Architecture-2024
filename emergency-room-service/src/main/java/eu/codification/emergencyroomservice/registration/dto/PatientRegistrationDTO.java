@@ -18,4 +18,5 @@ public class PatientRegistrationDTO {
     private LocalDate dateOfBirth;
     private int height;
     private int weight;
+    private String documentId;
 }
