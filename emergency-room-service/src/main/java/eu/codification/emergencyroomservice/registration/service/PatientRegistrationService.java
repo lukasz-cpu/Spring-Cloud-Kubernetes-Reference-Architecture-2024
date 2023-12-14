@@ -20,8 +20,7 @@ public class PatientRegistrationService {
 
     public void proceedWithRegistration(PatientRegistration patientRegistration) {
         PatientRegistrationEntity patientRegistrationEntity = PatientRegistrationMapper.mapToEntity(patientRegistration);
-        PatientRegistrationEntity save = patientRegistrationRepository.save(patientRegistrationEntity);
-        log.info(save.getId());
-
+        PatientRegistrationEntity savedRegistration = patientRegistrationRepository.save(patientRegistrationEntity);
+        log.info("Successfully saved item to the database with patient's id: {}", savedRegistration.getPatientId());
     }
 }
