@@ -21,6 +21,12 @@ subjects:
   - kind: ServiceAccount
     name: spring-cloud-kubernetes
     namespace: default
+  - kind: ServiceAccount
+    name: spring-cloud-kubernetes
+    namespace: strimzi
+  - kind: ServiceAccount
+    name: spring-cloud-kubernetes
+    namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
