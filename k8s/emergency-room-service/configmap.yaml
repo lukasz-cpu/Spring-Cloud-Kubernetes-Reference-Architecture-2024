@@ -2,7 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: emergency-room-service
-  namespace: spring-cloud-app
 data:
   application.properties: |-
     spring.data.mongodb.host: mongodb

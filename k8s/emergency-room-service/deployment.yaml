@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emergency-room-service
-  namespace: spring-cloud-app
   labels:
     app: emergency-room-service
 spec:
