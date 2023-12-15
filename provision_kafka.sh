@@ -16,10 +16,3 @@
     cd k8s/kafka
     kubectl apply -f kafka.yaml --namespace kafka
 )
-(
-    cd k8s/prometheus
-    kubectl apply -f prometheus-operator-deployment.yaml --namespace monitoring --force-conflicts=true --server-side
-    kubectl apply -f prometheus.yaml --namespace monitoring
-    kubectl apply -f strimzi-pod-monitor.yaml --namespace monitoring
-    kubectl apply -f grafana.yaml --namespace monitoring
-)
