@@ -7,4 +7,5 @@
    helm install strimzi-kafka-operator strimzi/strimzi-kafka-operator --version 0.38.0 -n strimzi --create-namespace -f strimzi-values.yaml
    kubectl apply -f kafka-metrics.yaml
    kubectl apply -f kafka-deployment.yaml
+   kubectl apply -f pod-monitoring.yaml
 )
