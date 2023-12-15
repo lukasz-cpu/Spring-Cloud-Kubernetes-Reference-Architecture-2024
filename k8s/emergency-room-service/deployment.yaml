@@ -19,7 +19,7 @@ spec:
       - name: emergency-room-service
         image: codification/emergency-room-service
         ports:
-        - containerPort: 8080
+        - containerPort: 8282
         env:
           - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
             value: "true"
