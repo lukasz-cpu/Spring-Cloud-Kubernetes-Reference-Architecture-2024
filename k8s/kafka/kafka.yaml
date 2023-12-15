@@ -2,7 +2,6 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: systems-kafka-cluster
-  namespace: kafka
 spec:
   kafka:
     version: 3.4.0
@@ -75,7 +74,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: kafka-metrics
-  namespace: kafka
   labels:
     app: strimzi
 data:
@@ -260,7 +258,6 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser
 metadata:
   name: systems-kafka-user
-  namespace: kafka
   labels:
     strimzi.io/cluster: systems-kafka-cluster
 spec:
