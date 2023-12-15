@@ -1,7 +1,7 @@
 apiVersion: skaffold/v4beta8
 kind: Config
 metadata:
-  name: spring-cloud-kubernetes-reference-architecture--
+  name: spring-cloud-kubernetes-reference-architecture
 build:
   artifacts:
     - image: codification/emergency-room-service
@@ -13,3 +13,15 @@ manifests:
     - k8s/roles/*.yaml
     - k8s/mongo/*.yaml
     - k8s/emergency-room-service/*.yaml
+
+portForward:
+  - resourceType: service
+    resourceName: emergency-room-service
+    namespace: default
+    port: 8080
+    localPort: 8080
+  - resourceType: service
+    namespace: default
+    resourceName: mongodb
+    port: 27017
+    localPort: 27017
