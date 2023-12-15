@@ -8,4 +8,5 @@
    kubectl apply -f kafka-metrics.yaml
    kubectl apply -f kafka-deployment.yaml
    kubectl apply -f pod-monitoring.yaml
+   kubectl apply -f kafka-topic.yaml
 )
