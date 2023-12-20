@@ -1,5 +1,6 @@
 package eu.codification.emergencyroomservice.registration.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import eu.codification.emergencyroomservice.registration.dto.PatientRegistrationDTO;
 import eu.codification.emergencyroomservice.registration.mappers.PatientRegistrationMapper;
 import eu.codification.emergencyroomservice.registration.model.PatientRegistration;
@@ -24,7 +25,7 @@ public class PatientRegistrationController {
     }
 
     @PostMapping
-    public ResponseEntity<?> patientRegistration(@RequestBody PatientRegistrationDTO patientRegistrationDTO) {
+    public ResponseEntity<?> patientRegistration(@RequestBody PatientRegistrationDTO patientRegistrationDTO) throws JsonProcessingException {
         PatientRegistration patientRegistration = PatientRegistrationMapper.mapDtoToModel(patientRegistrationDTO);
         patientRegistrationService.proceedWithRegistration(patientRegistration);
         return new ResponseEntity<>(HttpStatus.OK);
