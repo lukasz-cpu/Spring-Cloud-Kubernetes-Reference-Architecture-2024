@@ -1,27 +1,43 @@
 import subprocess
 import os
 
+
 def run_maven_clean_install(project_dir):
-    # Sprawdzenie, czy podany katalog istnieje
     if not os.path.isdir(project_dir):
-        print(f"Katalog {project_dir} nie istnieje.")
+        print(f"Folder {project_dir} does not exist.")
         return
 
-    # Przejście do katalogu projektu
     os.chdir(project_dir)
-    print(f"Przechodzę do katalogu: {project_dir}")
+    print(f"Going to the folder: {project_dir}")
 
-    # Wykonanie komendy maven clean install
     try:
-        result = subprocess.run(["mvn", "clean", "install"], check=True, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print("Kompilacja zakończona sukcesem.")
-        print(result.stdout)
+        print("Starting compiling.....")
+        process = subprocess.Popen(
+            ["mvn", "clean", "install"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True
+        )
+
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                print(output.strip())
+
+        rc = process.poll()
+        if rc == 0:
+            print("Compilation done.")
+        else:
+            print("Error occurred during compiling!")
+
     except subprocess.CalledProcessError as e:
-        print("Wystąpił błąd podczas kompilacji.")
+        print("Error occurred during compiling!")
         print(e.stderr)
 
+
 if __name__ == "__main__":
-    # Podaj ścieżkę do swojego projektu
     project_path = "./emergency-room-service/"
 
     run_maven_clean_install(project_path)
