@@ -1,7 +1,6 @@
 import subprocess
 import os
 
-
 def run_maven_clean_install(project_dir):
     if not os.path.isdir(project_dir):
         print(f"Folder {project_dir} does not exist.")
