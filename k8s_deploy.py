@@ -1,36 +1,6 @@
 import subprocess
 import os
 
-
-def remove_dangling_images():
-    try:
-        print("Removing dangling images...")
-        process = subprocess.Popen(
-            ["docker", "rmi", "$(docker images -f dangling=true -q)"],
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True
-        )
-
-        while True:
-            output = process.stdout.readline()
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                print(output.strip())
-
-        rc = process.poll()
-        if rc == 0:
-            print("Dangling images removed.")
-        else:
-            print("Error occurred during removing dangling images!")
-
-    except subprocess.CalledProcessError as e:
-        print("Error occurred during removing dangling images!")
-        print(e.stderr)
-
-
 def build_docker_image(project_dir):
     if not os.path.isdir(project_dir):
         print(f"Folder {project_dir} does not exist.")
@@ -68,5 +38,5 @@ def build_docker_image(project_dir):
 
 if __name__ == "__main__":
     project_path = "./emergency-room-service/"
-    remove_dangling_images()
+
     build_docker_image(project_path)
