@@ -10,6 +10,7 @@ build:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
-    - k8s/roles/*.yaml
-    - k8s/mongo/*.yaml
-    - k8s/emergency-room-service/*.yaml
+#    - k8s/mongo/mongodb-configmap.yaml
+#    - k8s/mongo/mongodb-secret.yaml
+#    - k8s/mongo/mongodb-deployment.yaml
+    - k8s/roles/roles.yaml
