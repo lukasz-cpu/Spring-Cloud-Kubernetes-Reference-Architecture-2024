@@ -6,6 +6,7 @@ metadata:
   name: zookeeper-service
   namespace: kafka
 spec:
+  type: NodePort
   ports:
     - name: zookeeper-port
       port: 2181
