@@ -33,6 +33,6 @@ public class PatientRegistrationService {
         log.info("Successfully saved item to the database with patient's id: {}", savedRegistration.getPatientId());
         String payLoad = objectMapper.writeValueAsString(patientRegistration);
         log.info("Successfully saved item to the database with patient: {}", payLoad);
-        kafkaTemplate.send("new-registration", payLoad);
+        kafkaTemplate.send("minikube-topic", payLoad);
     }
 }
