@@ -8,8 +8,13 @@ build:
       context: emergency-room-service
       docker:
         dockerfile: Dockerfile
+    - image: codification/config-server
+      context: config-server
+      docker:
+        dockerfile: Dockerfile
 manifests:
   rawYaml:
+    - k8s/config-server/*.yaml
     - k8s/emergency-room-service/*.yaml
     - k8s/mongo/*.yaml
     - k8s/roles/*.yaml
