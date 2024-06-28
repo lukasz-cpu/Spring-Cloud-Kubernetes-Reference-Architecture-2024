@@ -1,3 +1,5 @@
+server:
+  port: 3131
 spring:
   application:
     name: config-server
