@@ -2,7 +2,6 @@ package eu.codification.emergencyroomservice.registration.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import eu.codification.emergencyroomservice.registration.entities.PatientRegistrationEntity;
 import eu.codification.emergencyroomservice.registration.mappers.PatientRegistrationMapper;
 import eu.codification.emergencyroomservice.registration.model.PatientRegistration;
