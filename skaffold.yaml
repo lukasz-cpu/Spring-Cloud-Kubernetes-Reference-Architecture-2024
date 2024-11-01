@@ -11,6 +11,7 @@ build:
       hooks:
         before:
           - command: ["mvn", "clean", "install", "-DskipTests"]
+          - command: ["echo", "Maven build zakończony pomyślnie"]
     - image: codification/config-server
       context: config-server
       docker:
@@ -18,6 +19,7 @@ build:
       hooks:
         before:
           - command: ["mvn", "clean", "install", "-DskipTests"]
+          - command: ["echo", "Maven build zakończony pomyślnie"]
 manifests:
   rawYaml:
     - k8s/config-server/*.yaml
