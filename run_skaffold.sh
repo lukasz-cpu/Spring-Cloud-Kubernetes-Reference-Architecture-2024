@@ -18,5 +18,3 @@ cd - || { echo "Nie udało się wrócić do pierwotnego katalogu"; exit 1; }
 # Budowanie projektu za pomocą Skaffold
 skaffold build || { echo "Budowanie Skaffold nie powiodło się"; exit 1; }
 
-# Uruchomienie Skaffold w trybie deweloperskim
-skaffold dev || { echo "Uruchomienie Skaffold w trybie deweloperskim nie powiodło się"; exit 1; }
