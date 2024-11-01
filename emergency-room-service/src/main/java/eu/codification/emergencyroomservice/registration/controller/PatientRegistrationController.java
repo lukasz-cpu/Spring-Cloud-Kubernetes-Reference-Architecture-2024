@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 
 @RestController
 @RequestMapping(value = "/registration")
-
 public class PatientRegistrationController {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final PatientRegistrationService patientRegistrationService;
