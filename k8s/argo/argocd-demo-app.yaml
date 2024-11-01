@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/lukasz-cpu/Spring-Cloud-Kubernetes-Reference-Architecture-2024
     targetRevision: HEAD
-    path: development
+    path: deployment
     directory:
       recurse: true
 
