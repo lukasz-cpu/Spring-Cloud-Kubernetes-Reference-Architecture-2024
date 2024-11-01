@@ -8,25 +8,13 @@ build:
       context: emergency-room-service
       docker:
         dockerfile: Dockerfile
-      hooks:
-        before:
-          - command: ["mvn", "clean", "install", "-DskipTests"]
-          - command: ["echo", "Maven build zakończony pomyślnie"]
     - image: codification/config-server
       context: config-server
       docker:
         dockerfile: Dockerfile
-      hooks:
-        before:
-          - command: ["mvn", "clean", "install", "-DskipTests"]
-          - command: ["echo", "Maven build zakończony pomyślnie"]
 manifests:
   rawYaml:
     - k8s/config-server/*.yaml
     - k8s/emergency-room-service/*.yaml
     - k8s/mongo/*.yaml
     - k8s/roles/*.yaml
-    - k8s/kafka/zookeeper.yaml
-    - k8s/kafka/kafka.yaml
-    
-
