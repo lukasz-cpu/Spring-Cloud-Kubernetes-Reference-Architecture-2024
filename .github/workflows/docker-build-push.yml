@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
+          distribution: 'temurin' # Specify the Java distribution
 
       - name: Build emergency-room-service with Maven
         working-directory: ./emergency-room-service
