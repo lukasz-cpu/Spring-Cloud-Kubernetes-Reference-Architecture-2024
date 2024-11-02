@@ -17,7 +17,7 @@ spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
       - name: config-server
-        image: codification/config-server
+        image: codification/config-server:latest
         ports:
         - containerPort: 3131
         env:
