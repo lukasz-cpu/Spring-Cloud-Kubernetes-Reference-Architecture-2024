@@ -4,6 +4,6 @@ metadata:
   name: emergency-room-service
 data:
   application.properties: |-
-    spring.data.mongodb.host: mongodb
-    spring.data.mongodb.database: admin
-    spring.data.mongodb.authentication-database: admin
+    spring.data.mongodb.host=mongodb
+    spring.data.mongodb.database=admin
+    spring.data.mongodb.authentication-database=admin
