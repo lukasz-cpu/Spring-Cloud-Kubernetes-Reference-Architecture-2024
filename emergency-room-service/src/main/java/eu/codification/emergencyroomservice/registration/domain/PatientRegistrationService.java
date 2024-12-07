@@ -17,16 +17,17 @@ public class PatientRegistrationService {
     private final PatientRegistrationRepository patientRegistrationRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
     @Autowired
-    ClientSession clientSession;
+    private final ClientSession clientSession;
 
 
     private ObjectMapper objectMapper;
 
     public PatientRegistrationService(PatientRegistrationRepository patientRegistrationRepository,
-                                      KafkaTemplate<String, String> kafkaTemplate,
+                                      KafkaTemplate<String, String> kafkaTemplate, ClientSession clientSession,
                                       ObjectMapper objectMapper) {
         this.patientRegistrationRepository = patientRegistrationRepository;
         this.kafkaTemplate = kafkaTemplate;
+        this.clientSession = clientSession;
         this.objectMapper = objectMapper;
     }
 
