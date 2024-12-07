@@ -23,12 +23,6 @@ subjects:
     namespace: default
   - kind: ServiceAccount
     name: spring-cloud-kubernetes
-    namespace: strimzi
-  - kind: ServiceAccount
-    name: spring-cloud-kubernetes
-    namespace: monitoring
-  - kind: ServiceAccount
-    name: argocd
     namespace: argocd
 roleRef:
   apiGroup: rbac.authorization.k8s.io
