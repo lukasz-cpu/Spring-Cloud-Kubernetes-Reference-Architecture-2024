@@ -1,6 +1,6 @@
 package eu.codification.emergencyroomservice.registration.repository;
 
-import eu.codification.emergencyroomservice.registration.entities.PatientRegistrationEntity;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

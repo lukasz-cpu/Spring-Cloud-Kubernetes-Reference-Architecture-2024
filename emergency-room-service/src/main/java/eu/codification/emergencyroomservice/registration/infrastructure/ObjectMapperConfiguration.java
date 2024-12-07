@@ -1,4 +1,4 @@
-package eu.codification.emergencyroomservice.registration.configuration;
+package eu.codification.emergencyroomservice.registration.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

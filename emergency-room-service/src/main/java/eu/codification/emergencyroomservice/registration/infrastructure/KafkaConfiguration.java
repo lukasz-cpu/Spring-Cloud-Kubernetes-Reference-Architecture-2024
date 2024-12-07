@@ -1,8 +1,6 @@
-package eu.codification.emergencyroomservice.registration.configuration;
+package eu.codification.emergencyroomservice.registration.infrastructure;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.internals.Sender;
-import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
