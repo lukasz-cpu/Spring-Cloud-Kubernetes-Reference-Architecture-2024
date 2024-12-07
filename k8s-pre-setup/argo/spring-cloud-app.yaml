@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: Spring Cloud Kubernetes Reference Architecture
+  name: spring-cloud-kubernetes-reference-architecture
   namespace: spring-cloud
 spec:
   project: default
