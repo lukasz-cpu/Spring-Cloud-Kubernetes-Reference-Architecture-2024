@@ -17,7 +17,9 @@ public class PatientRegistrationService {
 
     private ObjectMapper objectMapper;
 
-    public PatientRegistrationService(PatientRegistrationRepository patientRegistrationRepository, KafkaTemplate<String, String> kafkaTemplate, ObjectMapper objectMapper) {
+    public PatientRegistrationService(PatientRegistrationRepository patientRegistrationRepository,
+                                      KafkaTemplate<String, String> kafkaTemplate,
+                                      ObjectMapper objectMapper) {
         this.patientRegistrationRepository = patientRegistrationRepository;
         this.kafkaTemplate = kafkaTemplate;
         this.objectMapper = objectMapper;
