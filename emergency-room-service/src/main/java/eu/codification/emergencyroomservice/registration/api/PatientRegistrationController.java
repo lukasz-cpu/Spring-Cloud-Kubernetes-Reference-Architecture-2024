@@ -1,4 +1,4 @@
-package eu.codification.emergencyroomservice.registration.infrastructure;
+package eu.codification.emergencyroomservice.registration.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import eu.codification.emergencyroomservice.registration.dto.PatientRegistrationDTO;

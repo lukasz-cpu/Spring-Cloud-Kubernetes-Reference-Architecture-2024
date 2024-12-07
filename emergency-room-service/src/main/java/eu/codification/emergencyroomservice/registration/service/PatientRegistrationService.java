@@ -2,8 +2,8 @@ package eu.codification.emergencyroomservice.registration.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistationEntityMapper;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
-import eu.codification.emergencyroomservice.registration.mappers.PatientRegistrationMapper;
 import eu.codification.emergencyroomservice.registration.model.PatientRegistration;
 import eu.codification.emergencyroomservice.registration.repository.PatientRegistrationRepository;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class PatientRegistrationService {
     }
 
     public void proceedWithRegistration(PatientRegistration patientRegistration) throws JsonProcessingException {
-        PatientRegistrationEntity patientRegistrationEntity = PatientRegistrationMapper.mapToEntity(patientRegistration);
+        PatientRegistrationEntity patientRegistrationEntity = PatientRegistationEntityMapper.mapToEntity(patientRegistration);
         PatientRegistrationEntity savedRegistration = patientRegistrationRepository.save(patientRegistrationEntity);
         log.info("Successfully saved item to the database with patient's id: {}", savedRegistration.getPatientId());
         String payLoad = objectMapper.writeValueAsString(patientRegistration);
