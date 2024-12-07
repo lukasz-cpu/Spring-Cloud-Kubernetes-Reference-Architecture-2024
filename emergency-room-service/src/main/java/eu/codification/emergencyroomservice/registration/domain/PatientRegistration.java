@@ -1,4 +1,4 @@
-package eu.codification.emergencyroomservice.registration.model;
+package eu.codification.emergencyroomservice.registration.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

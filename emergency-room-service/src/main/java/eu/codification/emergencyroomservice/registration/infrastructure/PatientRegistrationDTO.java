@@ -1,4 +1,4 @@
-package eu.codification.emergencyroomservice.registration.dto;
+package eu.codification.emergencyroomservice.registration.infrastructure;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

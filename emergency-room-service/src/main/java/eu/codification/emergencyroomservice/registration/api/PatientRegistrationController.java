@@ -1,10 +1,10 @@
 package eu.codification.emergencyroomservice.registration.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import eu.codification.emergencyroomservice.registration.dto.PatientRegistrationDTO;
-import eu.codification.emergencyroomservice.registration.mappers.PatientRegistrationMapper;
-import eu.codification.emergencyroomservice.registration.model.PatientRegistration;
-import eu.codification.emergencyroomservice.registration.service.PatientRegistrationService;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationDTO;
+import eu.codification.emergencyroomservice.registration.domain.PatientRegistrationMapper;
+import eu.codification.emergencyroomservice.registration.domain.PatientRegistration;
+import eu.codification.emergencyroomservice.registration.domain.PatientRegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
