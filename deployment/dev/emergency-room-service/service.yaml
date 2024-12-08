@@ -9,6 +9,7 @@ spec:
   ports:
     - port: 8282
       protocol: TCP
+      name: http
   selector:
     app: emergency-room-service
   type: ClusterIP
