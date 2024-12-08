@@ -16,16 +16,6 @@ spec:
                   number: 8282
             path: /
             pathType: Prefix
-    - host: mongo.localdev.me
-      http:
-        paths:
-          - backend:
-              service:
-                name: mongodb
-                port:
-                  number: 27017
-            path: /
-            pathType: Prefix
 status:
   loadBalancer:
     ingress:
