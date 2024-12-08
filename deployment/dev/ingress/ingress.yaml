@@ -6,24 +6,14 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-#    - host: demo.localdev.me
-#      http:
-#        paths:
-#          - backend:
-#              service:
-#                name: emergency-room-service
-#                port:
-#                  number: 8282
-#            path: /
-#            pathType: Prefix
     - host: demo.localdev.me
       http:
         paths:
           - backend:
               service:
-                name: kafka-service
+                name: emergency-room-service
                 port:
-                  number: 9092
+                  number: 8282
             path: /
             pathType: Prefix
 status:
