@@ -5,8 +5,12 @@ argocd admin initial-password -n argocd
 kubectl create namespace spring-cloud
 kubectl apply -f spring-cloud-app.yaml
 
+-----------------------------------
+
 Instalacja ingress'a
 
-helm upgrade --install ingress-nginx ingress-nginx \
---repo https://kubernetes.github.io/ingress-nginx \
---namespace ingress-nginx --create-namespace
+https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
+
+working after this tut
+
+-----------------------------------
