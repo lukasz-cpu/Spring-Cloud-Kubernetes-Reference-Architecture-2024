@@ -22,9 +22,6 @@ public class PatientRegistrationController {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final PatientRegistrationService patientRegistrationService;
 
-    @Value("${my.custom.property}")
-    private String customProperty;
-
     public PatientRegistrationController(PatientRegistrationService patientRegistrationService) {
         this.patientRegistrationService = patientRegistrationService;
     }
@@ -34,10 +31,5 @@ public class PatientRegistrationController {
         PatientRegistration patientRegistration = PatientRegistrationMapper.mapDtoToModel(patientRegistrationDTO);
         patientRegistrationService.proceedWithRegistration(patientRegistration);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping("/custom-property")
-    public ResponseEntity<String> getCustomProperty() {
-        return new ResponseEntity<>(customProperty, HttpStatus.OK);
     }
 }

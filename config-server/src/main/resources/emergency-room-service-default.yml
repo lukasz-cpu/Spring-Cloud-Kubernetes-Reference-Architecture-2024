@@ -1,3 +1,5 @@
-my:
-  custom:
-    property: test
+kafka:
+  address:
+  patient-registration:
+    topic: minikube-topic
+
