@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Generate short SHA and Berlin timestamp
+      - name: Generate short SHA
         id: tag_info
         run: |
           SHORT_SHA=$(echo "${GITHUB_SHA}" | tail -c 5)
