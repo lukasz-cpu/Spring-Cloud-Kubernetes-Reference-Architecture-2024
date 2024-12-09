@@ -1,4 +1,4 @@
-name: Build, Tag, and Push Docker Images
+name: Build, Tag, Push Docker Images, and Update Deployment
 
 on:
   push:
@@ -12,8 +12,6 @@ jobs:
       matrix:
         service:
           - emergency-room-service
-          - config-server
-          - patients-analyzer
 
     steps:
       - name: Checkout repository
@@ -25,7 +23,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # Build each service with Maven
       - name: Build with Maven
         run: mvn clean package
         working-directory: ./${{ matrix.service }}
@@ -54,5 +51,21 @@ jobs:
           file: ./${{ matrix.service }}/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service }}:latest
-            ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service }}:${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
+            mercangel/${{ matrix.service }}:latest
+            mercangel/${{ matrix.service }}:${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
+
+      - name: Update deployment YAML with new SHA
+        run: |
+          IMAGE_TAG="${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}"
+          FILE_PATH="deployment/dev/${{ matrix.service }}/deployment.yaml"
+          sed -i "s|image: mercangel/${{ matrix.service }}:.*|image: mercangel/${{ matrix.service }}:${IMAGE_TAG}|" $FILE_PATH
+
+      - name: Commit and push updated YAML
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add deployment/dev/${{ matrix.service }}/deployment.yaml
+          git commit -m "Update image tag for ${{ matrix.service }} to ${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}"
+          git push
