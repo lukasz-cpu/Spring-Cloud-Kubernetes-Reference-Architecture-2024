@@ -43,7 +43,7 @@ public class PatientRegistrationService {
         patientRegistrationRepository.save(patientRegistrationEntity);
 
     log.info(
-        "Successfully saved item to the database with patient's id: {}",
+        "Successfully saved item to patient repository with patient's id: {}",
         savedRegistration.getPatientId());
 
     String payLoad = objectMapper.writeValueAsString(patientRegistration);
@@ -51,9 +51,9 @@ public class PatientRegistrationService {
     PatientsOutboxRegistrationEntity patientsOutboxRegistrationEntity =
         PatientRegistrationMapper.mapToOutboxEntity(savedRegistration, payLoad);
 
-    patientsOutboxRegistrationRepository.save(patientsOutboxRegistrationEntity);
+    PatientsOutboxRegistrationEntity savedOutBox = patientsOutboxRegistrationRepository.save(patientsOutboxRegistrationEntity);
 
-    log.info("Successfully saved item to the database with patient: {}", payLoad);
+    log.info("Successfully saved item to outbox repository with patient's id: {}", savedOutBox.getAggregateId());
     
   }
 }
