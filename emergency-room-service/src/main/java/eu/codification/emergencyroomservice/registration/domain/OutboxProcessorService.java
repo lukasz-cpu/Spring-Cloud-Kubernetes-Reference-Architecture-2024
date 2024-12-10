@@ -1,16 +1,15 @@
 package eu.codification.emergencyroomservice.registration.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistationStatus;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientsOutboxRegistrationEntity;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Component
 public class OutboxProcessorService {
@@ -30,6 +29,7 @@ public class OutboxProcessorService {
   }
 
   @Transactional
+  @Scheduled(fixedRate = 10000)
   public void processPendingOutboxEvents() {
     List<PatientsOutboxRegistrationEntity> pendingOutboxEntries =
         patientsOutboxRegistrationRepository.findByStatus(PatientRegistationStatus.PENDING);
