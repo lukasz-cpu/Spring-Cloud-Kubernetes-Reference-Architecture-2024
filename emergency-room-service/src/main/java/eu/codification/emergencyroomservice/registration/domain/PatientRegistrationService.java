@@ -15,6 +15,7 @@ public class PatientRegistrationService {
 
   private final Logger log = LoggerFactory.getLogger(getClass());
   private final PatientRegistrationRepository patientRegistrationRepository;
+  private final PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository;
   private final KafkaTemplate<String, String> kafkaTemplate;
 
   @Value("${kafka.patient-registration.topic}")
@@ -23,11 +24,13 @@ public class PatientRegistrationService {
   private ObjectMapper objectMapper;
 
   public PatientRegistrationService(
-      PatientRegistrationRepository patientRegistrationRepository,
-      KafkaTemplate<String, String> kafkaTemplate,
-      ObjectMapper objectMapper) {
+          PatientRegistrationRepository patientRegistrationRepository,
+          PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository, PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository1,
+          KafkaTemplate<String, String> kafkaTemplate,
+          ObjectMapper objectMapper) {
     this.patientRegistrationRepository = patientRegistrationRepository;
-    this.kafkaTemplate = kafkaTemplate;
+      this.patientsOutboxRegistrationRepository = patientsOutboxRegistrationRepository1;
+      this.kafkaTemplate = kafkaTemplate;
     this.objectMapper = objectMapper;
   }
 
@@ -46,13 +49,18 @@ public class PatientRegistrationService {
 
     String payLoad = objectMapper.writeValueAsString(patientRegistration);
 
-    PatientsOutboxRegistrationEntity outboxEntity = PatientsOutboxRegistrationEntity.builder()
+    PatientsOutboxRegistrationEntity outboxEntity =
+        PatientsOutboxRegistrationEntity.builder()
             .aggregateId(savedRegistration.getPatientId())
             .aggregateType("PatientRegistration")
             .eventType("CREATED")
             .payload(payLoad)
             .status("PENDING")
             .build();
+
+    PatientsOutboxRegistrationEntity s = new PatientsOutboxRegistrationEntity();
+
+    patientsOutboxRegistrationRepository.save(s);
 
 
     log.info("Successfully saved item to the database with patient: {}", payLoad);
