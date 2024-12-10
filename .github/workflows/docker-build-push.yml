@@ -12,6 +12,7 @@ jobs:
       matrix:
         service:
           - emergency-room-service
+          - config-server
 
     steps:
       - name: Checkout repository

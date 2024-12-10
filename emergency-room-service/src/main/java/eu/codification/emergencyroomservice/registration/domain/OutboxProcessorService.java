@@ -52,7 +52,7 @@ public class OutboxProcessorService {
     }
   }
 
-    @KafkaListener(topics = "${kafka.patient-registration.topic}", groupId = "1235")
+    @KafkaListener(topics = "${kafka.patient-registration.topic}")
     public void listenToPatientRegistrationTopic(String message) {
         log.info("Received message from Kafka topic '{}': {}", patientRegistrationOutBoxTopic, message);
     }
