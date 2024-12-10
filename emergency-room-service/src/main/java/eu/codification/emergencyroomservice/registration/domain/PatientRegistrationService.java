@@ -2,10 +2,7 @@ package eu.codification.emergencyroomservice.registration.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientEventType;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistationStatus;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientsOutboxRegistrationEntity;
+import eu.codification.emergencyroomservice.registration.infrastructure.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,18 +48,12 @@ public class PatientRegistrationService {
 
     String payLoad = objectMapper.writeValueAsString(patientRegistration);
 
-    PatientsOutboxRegistrationEntity outboxEntity =
-        PatientsOutboxRegistrationEntity.builder()
-            .aggregateId(savedRegistration.getPatientId())
-            .aggregateType("PatientRegistration")
-            .eventType(PatientEventType.CREATED)
-            .payload(payLoad)
-            .status(PatientRegistationStatus.PENDING)
-            .build();
+    PatientsOutboxRegistrationEntity patientsOutboxRegistrationEntity =
+        PatientRegistrationMapper.mapToOutboxEntity(savedRegistration, payLoad);
 
-    patientsOutboxRegistrationRepository.save(outboxEntity);
+    patientsOutboxRegistrationRepository.save(patientsOutboxRegistrationEntity);
 
     log.info("Successfully saved item to the database with patient: {}", payLoad);
-    kafkaTemplate.send(customProperty, payLoad);
+    
   }
 }

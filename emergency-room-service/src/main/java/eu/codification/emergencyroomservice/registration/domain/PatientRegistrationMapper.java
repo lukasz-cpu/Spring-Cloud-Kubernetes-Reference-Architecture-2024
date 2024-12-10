@@ -1,9 +1,6 @@
 package eu.codification.emergencyroomservice.registration.domain;
 
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationDTO;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
-import eu.codification.emergencyroomservice.registration.infrastructure.PatientsOutboxRegistrationEntity;
-
+import eu.codification.emergencyroomservice.registration.infrastructure.*;
 import java.time.LocalDate;
 
 public class PatientRegistrationMapper {
@@ -20,6 +17,17 @@ public class PatientRegistrationMapper {
         LocalDate.now()); // Assuming you want to set the current date for hospital admission
     model.setDocumentId(dto.getDocumentId());
     return model;
+  }
+
+  public static PatientsOutboxRegistrationEntity mapToOutboxEntity(
+      PatientRegistrationEntity savedRegistration, String payLoad) {
+    return PatientsOutboxRegistrationEntity.builder()
+        .aggregateId(savedRegistration.getPatientId())
+        .aggregateType(PatientAggregatType.PATIENT_REGISTRATION.getValue())
+        .eventType(PatientEventType.CREATED)
+        .payload(payLoad)
+        .status(PatientRegistationStatus.PENDING)
+        .build();
   }
 
   public static PatientRegistrationEntity mapToEntity(PatientRegistration patientRegistration) {
