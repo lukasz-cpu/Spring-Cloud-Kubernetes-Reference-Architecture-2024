@@ -41,7 +41,6 @@ public class OutboxProcessorService {
     }
 
     for (PatientsOutboxRegistrationEntity outboxEntity : pendingOutboxEntries) {
-      try {
         String payload = outboxEntity.getPayload();
         kafkaTemplate.send(patientRegistrationOutBoxTopic, payload);
 
@@ -50,10 +49,6 @@ public class OutboxProcessorService {
 
         log.info(
             "Successfully sent event to Kafka with aggregateId: {}", outboxEntity.getAggregateId());
-      } catch (Exception e) {
-        log.error(
-            "Error sending event to Kafka for aggregateId: {}", outboxEntity.getAggregateId(), e);
-      }
     }
   }
 
