@@ -2,6 +2,8 @@ package eu.codification.emergencyroomservice.registration.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientEventType;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistationStatus;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientsOutboxRegistrationEntity;
 import org.slf4j.Logger;
@@ -53,15 +55,12 @@ public class PatientRegistrationService {
         PatientsOutboxRegistrationEntity.builder()
             .aggregateId(savedRegistration.getPatientId())
             .aggregateType("PatientRegistration")
-            .eventType("CREATED")
+            .eventType(PatientEventType.CREATED)
             .payload(payLoad)
-            .status("PENDING")
+            .status(PatientRegistationStatus.PENDING)
             .build();
 
-    PatientsOutboxRegistrationEntity s = new PatientsOutboxRegistrationEntity();
-
-    patientsOutboxRegistrationRepository.save(s);
-
+    patientsOutboxRegistrationRepository.save(outboxEntity);
 
     log.info("Successfully saved item to the database with patient: {}", payLoad);
     kafkaTemplate.send(customProperty, payLoad);
