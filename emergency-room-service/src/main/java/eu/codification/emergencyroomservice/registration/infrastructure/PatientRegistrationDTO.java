@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PatientRegistrationDTO {
-    private String firstName;
-    private String lastName;
-    private String email;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfBirth;
-    private int height;
-    private int weight;
-    private String documentId;
+  private String firstName;
+  private String lastName;
+  private String email;
+
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate dateOfBirth;
+
+  private int height;
+  private int weight;
+  private String documentId;
 }
