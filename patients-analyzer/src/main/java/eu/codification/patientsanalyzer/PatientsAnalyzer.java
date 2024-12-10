@@ -8,13 +8,10 @@ import org.springframework.kafka.annotation.KafkaHandler;
 @SpringBootApplication
 public class PatientsAnalyzer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PatientsAnalyzer.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(PatientsAnalyzer.class, args);
+  }
 
-    @KafkaHandler
-    public void process(ConsumerRecord<String, String> record) {
-
-    }
-
+  @KafkaHandler
+  public void process(ConsumerRecord<String, String> record) {}
 }

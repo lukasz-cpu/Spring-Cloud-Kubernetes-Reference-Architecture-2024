@@ -2,7 +2,6 @@ package eu.codification.emergencyroomservice.registration.domain;
 
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationDTO;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
-
 import java.time.LocalDate;
 
 public class PatientRegistrationMapper {

@@ -12,29 +12,35 @@ import org.springframework.stereotype.Component;
 @Component
 public class PatientRegistrationService {
 
-    private final Logger log = LoggerFactory.getLogger(getClass());
-    private final PatientRegistrationRepository patientRegistrationRepository;
-    private final KafkaTemplate<String, String> kafkaTemplate;
-    @Value("${kafka.patient-registration.topic}")
-    private String customProperty;
+  private final Logger log = LoggerFactory.getLogger(getClass());
+  private final PatientRegistrationRepository patientRegistrationRepository;
+  private final KafkaTemplate<String, String> kafkaTemplate;
 
+  @Value("${kafka.patient-registration.topic}")
+  private String customProperty;
 
-    private ObjectMapper objectMapper;
+  private ObjectMapper objectMapper;
 
-    public PatientRegistrationService(PatientRegistrationRepository patientRegistrationRepository,
-                                      KafkaTemplate<String, String> kafkaTemplate,
-                                      ObjectMapper objectMapper) {
-        this.patientRegistrationRepository = patientRegistrationRepository;
-        this.kafkaTemplate = kafkaTemplate;
-        this.objectMapper = objectMapper;
-    }
+  public PatientRegistrationService(
+      PatientRegistrationRepository patientRegistrationRepository,
+      KafkaTemplate<String, String> kafkaTemplate,
+      ObjectMapper objectMapper) {
+    this.patientRegistrationRepository = patientRegistrationRepository;
+    this.kafkaTemplate = kafkaTemplate;
+    this.objectMapper = objectMapper;
+  }
 
-    public void proceedWithRegistration(PatientRegistration patientRegistration) throws JsonProcessingException {
-        PatientRegistrationEntity patientRegistrationEntity = PatientRegistrationMapper.mapToEntity(patientRegistration);
-        PatientRegistrationEntity savedRegistration = patientRegistrationRepository.save(patientRegistrationEntity);
-        log.info("Successfully saved item to the database with patient's id: {}", savedRegistration.getPatientId());
-        String payLoad = objectMapper.writeValueAsString(patientRegistration);
-        log.info("Successfully saved item to the database with patient: {}", payLoad);
-        kafkaTemplate.send(customProperty, payLoad);
-    }
+  public void proceedWithRegistration(PatientRegistration patientRegistration)
+      throws JsonProcessingException {
+    PatientRegistrationEntity patientRegistrationEntity =
+        PatientRegistrationMapper.mapToEntity(patientRegistration);
+    PatientRegistrationEntity savedRegistration =
+        patientRegistrationRepository.save(patientRegistrationEntity);
+    log.info(
+        "Successfully saved item to the database with patient's id: {}",
+        savedRegistration.getPatientId());
+    String payLoad = objectMapper.writeValueAsString(patientRegistration);
+    log.info("Successfully saved item to the database with patient: {}", payLoad);
+    kafkaTemplate.send(customProperty, payLoad);
+  }
 }
