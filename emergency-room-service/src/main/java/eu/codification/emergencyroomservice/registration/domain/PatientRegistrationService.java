@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.beans.Transient;
 
 @Component
 public class PatientRegistrationService {
@@ -15,24 +18,19 @@ public class PatientRegistrationService {
   private final Logger log = LoggerFactory.getLogger(getClass());
   private final PatientRegistrationRepository patientRegistrationRepository;
   private final PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository;
-  private final KafkaTemplate<String, String> kafkaTemplate;
-
-  @Value("${kafka.patient-registration.topic}")
-  private String customProperty;
 
   private ObjectMapper objectMapper;
 
   public PatientRegistrationService(
-          PatientRegistrationRepository patientRegistrationRepository,
-          PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository, PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository1,
-          KafkaTemplate<String, String> kafkaTemplate,
-          ObjectMapper objectMapper) {
+      PatientRegistrationRepository patientRegistrationRepository,
+      PatientsOutboxRegistrationRepository patientsOutboxRegistrationRepository,
+      ObjectMapper objectMapper) {
     this.patientRegistrationRepository = patientRegistrationRepository;
-      this.patientsOutboxRegistrationRepository = patientsOutboxRegistrationRepository1;
-      this.kafkaTemplate = kafkaTemplate;
+    this.patientsOutboxRegistrationRepository = patientsOutboxRegistrationRepository;
     this.objectMapper = objectMapper;
   }
 
+  @Transactional
   public void proceedWithRegistration(PatientRegistration patientRegistration)
       throws JsonProcessingException {
 
@@ -51,9 +49,11 @@ public class PatientRegistrationService {
     PatientsOutboxRegistrationEntity patientsOutboxRegistrationEntity =
         PatientRegistrationMapper.mapToOutboxEntity(savedRegistration, payLoad);
 
-    PatientsOutboxRegistrationEntity savedOutBox = patientsOutboxRegistrationRepository.save(patientsOutboxRegistrationEntity);
+    PatientsOutboxRegistrationEntity savedOutBox =
+        patientsOutboxRegistrationRepository.save(patientsOutboxRegistrationEntity);
 
-    log.info("Successfully saved item to outbox repository with patient's id: {}", savedOutBox.getAggregateId());
-    
+    log.info(
+        "Successfully saved item to outbox repository with patient's id: {}",
+        savedOutBox.getAggregateId());
   }
 }
