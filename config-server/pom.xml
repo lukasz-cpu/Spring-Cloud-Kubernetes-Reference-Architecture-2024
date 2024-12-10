@@ -9,7 +9,12 @@
         <version>1.0</version>
     </parent>
 
+    <groupId>eu.codification</groupId>
     <artifactId>config-server</artifactId>
+    <version>${config-server.version}</version>
+    <name>config-server</name>
+    <description>Demo project for Spring Boot</description>
+
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

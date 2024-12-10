@@ -10,7 +10,7 @@
 
 	<groupId>eu.codification</groupId>
 	<artifactId>emergency-room-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${emergency-room-service.version}</version>
 	<name>emergency-room-service</name>
 	<description>Demo project for Spring Boot</description>
 
