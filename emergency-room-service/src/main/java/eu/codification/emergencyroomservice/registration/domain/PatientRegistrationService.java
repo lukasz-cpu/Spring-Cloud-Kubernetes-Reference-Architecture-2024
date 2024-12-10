@@ -3,6 +3,7 @@ package eu.codification.emergencyroomservice.registration.domain;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.codification.emergencyroomservice.registration.infrastructure.PatientRegistrationEntity;
+import eu.codification.emergencyroomservice.registration.infrastructure.PatientsOutboxRegistrationEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,14 +33,28 @@ public class PatientRegistrationService {
 
   public void proceedWithRegistration(PatientRegistration patientRegistration)
       throws JsonProcessingException {
+
     PatientRegistrationEntity patientRegistrationEntity =
         PatientRegistrationMapper.mapToEntity(patientRegistration);
+
     PatientRegistrationEntity savedRegistration =
         patientRegistrationRepository.save(patientRegistrationEntity);
+
     log.info(
         "Successfully saved item to the database with patient's id: {}",
         savedRegistration.getPatientId());
+
     String payLoad = objectMapper.writeValueAsString(patientRegistration);
+
+    PatientsOutboxRegistrationEntity outboxEntity = PatientsOutboxRegistrationEntity.builder()
+            .aggregateId(savedRegistration.getPatientId())
+            .aggregateType("PatientRegistration")
+            .eventType("CREATED")
+            .payload(payLoad)
+            .status("PENDING")
+            .build();
+
+
     log.info("Successfully saved item to the database with patient: {}", payLoad);
     kafkaTemplate.send(customProperty, payLoad);
   }

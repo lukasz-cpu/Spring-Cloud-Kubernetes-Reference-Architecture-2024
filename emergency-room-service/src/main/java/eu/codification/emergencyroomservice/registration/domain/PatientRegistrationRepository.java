@@ -7,4 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PatientRegistrationRepository
-    extends MongoRepository<PatientRegistrationEntity, UUID> {}
+    extends MongoRepository<PatientRegistrationEntity, String> {}
