@@ -30,6 +30,7 @@ public class PatientRegistrationController {
     PatientRegistration patientRegistration =
         PatientRegistrationMapper.mapDtoToModel(patientRegistrationDTO);
     patientRegistrationService.proceedWithRegistration(patientRegistration);
+    //comment
     return new ResponseEntity<>(HttpStatus.OK);
   }
 }
