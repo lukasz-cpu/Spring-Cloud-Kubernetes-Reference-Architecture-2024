@@ -57,9 +57,9 @@ public class OutboxProcessorService {
     }
   }
 
-    @KafkaListener(topics = "${kafka.patient-registration.topic}", groupId = "default-consumer-group")
-    public void listenToPatientRegistrationTopic(String message) {
-        log.info("Received message from Kafka topic '{}': {}", patientRegistrationOutBoxTopic, message);
-    }
+//    @KafkaListener(topics = "${kafka.patient-registration.topic}", groupId = "default-consumer-group")
+//    public void listenToPatientRegistrationTopic(String message) {
+//        log.info("Received message from Kafka topic '{}': {}", patientRegistrationOutBoxTopic, message);
+//    }
 }
 
