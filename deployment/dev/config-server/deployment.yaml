@@ -17,7 +17,7 @@ spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
       - name: config-server
-        image: mercangel/config-server:a2da-20241211-2309-42
+        image: mercangel/config-server:bae4-20241212-0010-15
         ports:
         - containerPort: 3131
         env:
