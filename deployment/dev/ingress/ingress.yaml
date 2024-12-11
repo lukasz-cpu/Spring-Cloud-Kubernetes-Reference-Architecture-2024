@@ -16,7 +16,3 @@ spec:
                   number: 8282
             path: /
             pathType: Prefix
-status:
-  loadBalancer:
-    ingress:
-      - hostname: localhost
