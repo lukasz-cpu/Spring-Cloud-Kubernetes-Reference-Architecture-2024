@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patients-analyzer
+  labels:
+    app: patients-analyzer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patients-analyzer
+  template:
+    metadata:
+      labels:
+        app: patients-analyzer
+    spec:
+      serviceAccountName: spring-cloud-kubernetes
+      containers:
+      - name: patients-analyzer
+        image: mercangel/patients-analyzer:latest
+        ports:
+        - containerPort: 8383
+        env:
+          - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+            value: "true"
+          - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI
+            value: "true"
