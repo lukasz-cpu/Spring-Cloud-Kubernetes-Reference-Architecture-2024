@@ -29,7 +29,7 @@ public class OutboxProcessorService {
   }
 
   @Transactional
-  @Scheduled(fixedRate = 60000)
+  @Scheduled(fixedRate = 30000)
   public void processPendingOutboxEvents() {
     List<PatientsOutboxRegistrationEntity> pendingOutboxEntries =
         patientsOutboxRegistrationRepository.findByStatus(PatientRegistationStatus.PENDING);
@@ -40,15 +40,14 @@ public class OutboxProcessorService {
     }
 
     for (PatientsOutboxRegistrationEntity outboxEntity : pendingOutboxEntries) {
-        String payload = outboxEntity.getPayload();
-        kafkaTemplate.send(patientRegistrationOutBoxTopic, payload);
+      String payload = outboxEntity.getPayload();
+      kafkaTemplate.send(patientRegistrationOutBoxTopic, payload);
 
-        outboxEntity.setStatus(PatientRegistationStatus.SENT);
-        patientsOutboxRegistrationRepository.save(outboxEntity);
+      outboxEntity.setStatus(PatientRegistationStatus.SENT);
+      patientsOutboxRegistrationRepository.save(outboxEntity);
 
-        log.info(
-            "Successfully sent event to Kafka with aggregateId: {}", outboxEntity.getAggregateId());
+      log.info(
+          "Successfully sent event to Kafka with aggregateId: {}", outboxEntity.getAggregateId());
     }
   }
 }
-
