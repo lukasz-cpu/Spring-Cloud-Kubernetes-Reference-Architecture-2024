@@ -1,4 +1,4 @@
-package eu.codification.patientsanalyzer.infrastructure;
+package eu.codification.patientsanalyzer.main;
 
 import java.util.HashMap;
 import java.util.Map;
