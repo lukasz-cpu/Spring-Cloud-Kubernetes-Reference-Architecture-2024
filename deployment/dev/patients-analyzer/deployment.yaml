@@ -17,7 +17,7 @@ spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
       - name: patients-analyzer
-        image: mercangel/patients-analyzer:06fc-20241213-1851-57
+        image: mercangel/patients-analyzer:311b-20241213-1853-29
         ports:
         - containerPort: 8383
         env:

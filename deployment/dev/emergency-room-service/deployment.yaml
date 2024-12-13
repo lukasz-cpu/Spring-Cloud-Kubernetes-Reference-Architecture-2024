@@ -17,7 +17,7 @@ spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
       - name: emergency-room-service
-        image: mercangel/emergency-room-service:06fc-20241213-1851-59
+        image: mercangel/emergency-room-service:311b-20241213-1853-29
         ports:
         - containerPort: 8282
         env:
