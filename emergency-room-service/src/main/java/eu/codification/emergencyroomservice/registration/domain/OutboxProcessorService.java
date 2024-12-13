@@ -6,7 +6,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -51,10 +50,5 @@ public class OutboxProcessorService {
             "Successfully sent event to Kafka with aggregateId: {}", outboxEntity.getAggregateId());
     }
   }
-
-    @KafkaListener(topics = "${kafka.patient-registration.topic}")
-    public void listenToPatientRegistrationTopic(String message) {
-        log.info("Received message from Kafka topic '{}': {}", patientRegistrationOutBoxTopic, message);
-    }
 }
 
