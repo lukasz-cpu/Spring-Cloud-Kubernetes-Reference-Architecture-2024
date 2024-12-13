@@ -1,5 +1,4 @@
 kafka:
   address: kafka-service:9092
-  patient-registration:
+  registration:
     topic: minikube-topic
-

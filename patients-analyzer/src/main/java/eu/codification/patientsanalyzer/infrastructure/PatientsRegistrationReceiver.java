@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class PatientsRegistrationReceiver {
 
-    @KafkaListener(topics = "${kafka.patient-registration.topic}")
+    @KafkaListener(topics = "${kafka.registration.topic}")
     public void listenToPatientRegistrationTopic(String message) {
         log.info("Received message from Kafka topic '{}'", message);
     }
