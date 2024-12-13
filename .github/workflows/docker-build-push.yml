@@ -13,6 +13,7 @@ jobs:
         service:
           - emergency-room-service
           - config-server
+          - patients-analyzer
 
     steps:
       - name: Checkout repository
