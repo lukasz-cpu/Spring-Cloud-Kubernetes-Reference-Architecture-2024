@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgvector
+  labels:
+    app: pgvector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgvector
+  template:
+    metadata:
+      labels:
+        app: pgvector
+    spec:
+      containers:
+        - name: pgvector
+          image: pgvector/pgvector:pg17
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pgvector
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgvector
+                  key: postgres-password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: pgvector
+                  key: postgres-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgvector
+  labels:
+    app: pgvector
+spec:
+  ports:
+    - port: 5432
+      protocol: TCP
+  selector:
+    app: pgvector
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pgvector
+type: Opaque
+data:
+  postgres-password: bXlwYXNzd29yZA==  # "mypassword" encoded in base64
+  postgres-user: bXl1c2Vy  # "myuser" encoded in base64
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgvector
+data:
+  postgres-db: moviedb
