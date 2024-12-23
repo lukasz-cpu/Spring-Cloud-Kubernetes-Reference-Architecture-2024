@@ -49,5 +49,5 @@ public class OutboxProcessorService {
       log.info(
           "Successfully sent event to Kafka with aggregateId: {}", outboxEntity.getAggregateId());
     }
-  }
+   }
 }
