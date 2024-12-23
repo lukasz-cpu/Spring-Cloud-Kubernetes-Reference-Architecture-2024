@@ -14,5 +14,6 @@ helm upgrade --install ingress-nginx ingress-nginx \
 --namespace ingress-nginx --create-namespace
 
 --------------------------------------
+asd
 
 
